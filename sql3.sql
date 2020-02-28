@@ -32,5 +32,5 @@ select * from Catalog;
 
 select distinct(sid) SID from Catalog,Parts where Catalog.pid=Parts.pid and Parts.color='Red' or Parts.color='Green';
 select distinct(Catalog.sid) SID from Catalog,Parts,Supplier where Catalog.pid=Parts.pid and Catalog.sid=Supplier.sid and (Parts.color='Red' or Supplier.city='Bangalore');
-select  distinct c1.sid,c2.sid from Catalog c1,Catalog c2 where (c1.pid=c2.pid and c1.cost>c2.cost);
+select  distinct c1.sid,c2.sid from Catalog c1,Catalog c2 where c1.sid!=c2.sid and (c1.pid=c2.pid and c1.cost>c2.cost);
 select distinct(sid) SID from Catalog,Parts where Catalog.pid=Parts.pid and Parts.color='Red';
