@@ -26,7 +26,7 @@ values (11,'03/01/01','Mysore Road'),
 update ACCIDENT set location='South end Circle' where report_num=11;
 update ACCIDENT set location='Bull Temple Road' where report_num=13;
 update ACCIDENT set location='Kanakpura Road' where report_num=15;
-select * from ACCIDENT
+select * from ACCIDENT;
 insert into PARTICIPATED
 values ('A01','KA052250',11,10000),
 ('A02','KA053408',12,50000),
@@ -39,3 +39,7 @@ set damage_amount=25000 where reg_num='KA053408' and report_num=12;
 insert into ACCIDENT values(16,'05/07/21','Malleshwaram');
 select count(distinct driver_id) CNT from PARTICIPATED,ACCIDENT where  PARTICIPATED.report_num=ACCIDENT.report_num and accident_date like '2008%'; 	
 select count(driver_id) COUNT  from PARTICIPATED,CAR where PARTICIPATED.reg_num=CAR.reg_num and model='Indica';
+select distinct name 
+from PERSON,PARTICIPATED
+where damage_amount > (select avg(damage_amount)
+						from PARTICIPATED);
