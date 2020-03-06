@@ -1,6 +1,7 @@
 show databases;
 create database week3;
 show databases;
+use abhaya;
 create table Supplier(sid int,sname varchar(20),city varchar(20),PRIMARY KEY(sid));
 create table Parts(pid int,pname varchar(20),color varchar(20),PRIMARY KEY(pid));
 create table Catalog(sid int,pid int,cost double,PRIMARY KEY(sid,pid),foreign key(sid) references Supplier(sid),foreign key(pid) references Parts(pid));
@@ -34,3 +35,8 @@ select distinct(sid) SID from Catalog,Parts where Catalog.pid=Parts.pid and Part
 select distinct(Catalog.sid) SID from Catalog,Parts,Supplier where Catalog.pid=Parts.pid and Catalog.sid=Supplier.sid and (Parts.color='Red' or Supplier.city='Bangalore');
 select  distinct c1.sid,c2.sid from Catalog c1,Catalog c2 where c1.sid!=c2.sid and (c1.pid=c2.pid and c1.cost>c2.cost);
 select distinct(sid) SID from Catalog,Parts where Catalog.pid=Parts.pid and Parts.color='Red';
+select sname,pname 
+from Supplier,Parts,Catalog C
+where  Parts.pid=C.pid and Supplier.sid=C.sid and C.cost=(select max(C1.cost)
+																	from Catalog C1
+																	where Parts.pid=C1.pid);
