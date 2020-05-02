@@ -1,4 +1,4 @@
-reate database MOVIE_database;
+create database MOVIE_database;
 use MOVIE_database;
 
 create table actor(
