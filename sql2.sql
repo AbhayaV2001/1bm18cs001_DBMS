@@ -1,6 +1,5 @@
-show databases;
-create database Abhaya;
-use Abhaya;
+create database BankDB;
+use BankDB;
 create table Branch(
 branch_name varchar(30),
 branch_city varchar(10),
