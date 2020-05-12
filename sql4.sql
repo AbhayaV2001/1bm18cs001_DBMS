@@ -42,8 +42,6 @@ create table faculty(
  select distinct fname from faculty,enrolled,class where 5 > (select count(enrolled.snum) from enrolled , class where enrolled.cname = class.cname AND class.fid = faculty.fid );
  
  select distinct sname from student where snum NOT IN (select distinct snum from enrolled);
- 
-DROP database student_faculty;
 
  select S.age, S.lvl from student S group by S.age, S.lvl having S.lvl in (select S1.lvl from student S1 where S1.age = S.age group by S1.lvl, S1.age having count(*) >= all (select count(*) from student S2 where s1.age = S2.age group by S2.lvl, S2.age));
  
